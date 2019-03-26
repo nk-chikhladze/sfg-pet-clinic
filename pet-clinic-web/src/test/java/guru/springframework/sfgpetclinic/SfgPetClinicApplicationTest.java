@@ -1,12 +1,8 @@
 package guru.springframework.sfgpetclinic;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 public class SfgPetClinicApplicationTest {
 
-	@Test
+	@org.junit.Test
 	public void main() {
 	}
 }
