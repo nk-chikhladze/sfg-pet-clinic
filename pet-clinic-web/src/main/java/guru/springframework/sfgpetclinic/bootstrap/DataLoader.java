@@ -6,10 +6,12 @@ import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.model.Specialty;
 import guru.springframework.sfgpetclinic.model.Vet;
+import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.services.SpecialtyService;
 import guru.springframework.sfgpetclinic.services.VetService;
+import guru.springframework.sfgpetclinic.services.VisitService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -22,12 +24,14 @@ public class DataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialtyService specialtyService;
+	private final VisitService visitService;
 
-	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialtyService = specialtyService;
+		this.visitService = visitService;
 	}
 
 	@Override
@@ -86,7 +90,6 @@ public class DataLoader implements CommandLineRunner {
 		owner2.setAddress("123 Brickerel");
 		owner2.setCity("Miami");
 		owner2.setTelephone("123123213");
-		ownerService.save(owner2);
 
 		Pet fionasCat = new Pet();
 		fionasCat.setName("Just cat");
@@ -95,7 +98,18 @@ public class DataLoader implements CommandLineRunner {
 		fionasCat.setPetType(savedCatPetType);
 		owner2.getPets().add(fionasCat);
 
+		ownerService.save(owner2);
+
+		Visit catVisit = new Visit();
+		catVisit.setPet(fionasCat);
+		catVisit.setDate(LocalDate.now());
+		catVisit.setDescription("Snoozing cat");
+
+		visitService.save(catVisit);
+
 		System.out.println("Loaded Owners....");
+
+		System.out.println("Loaded Visits....");
 
 		Vet vet1 = new Vet();
 		vet1.setFirstName("Sam");
