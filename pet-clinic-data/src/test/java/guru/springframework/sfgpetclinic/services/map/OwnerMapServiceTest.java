@@ -47,10 +47,12 @@ class OwnerMapServiceTest {
 		Owner savedOwner = ownerMapService.save(owner2);
 
 		assertEquals(id, savedOwner.getId());
+
 	}
 
 	@Test
 	void saveNoId() {
+
 		Owner savedOwner = ownerMapService.save(Owner.builder().build());
 
 		assertNotNull(savedOwner);
@@ -76,7 +78,9 @@ class OwnerMapServiceTest {
 		Owner smith = ownerMapService.findByLastName(lastName);
 
 		assertNotNull(smith);
+
 		assertEquals(ownerId, smith.getId());
+
 	}
 
 	@Test
