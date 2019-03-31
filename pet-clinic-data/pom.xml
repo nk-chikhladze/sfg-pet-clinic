@@ -5,6 +5,7 @@
 		<groupId>guru.springframework</groupId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>pet-clinic-data</artifactId>
@@ -63,9 +64,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>guru.springframework.sfgpetclinic.SfgPetClinicApplication</mainClass>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -90,5 +88,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
